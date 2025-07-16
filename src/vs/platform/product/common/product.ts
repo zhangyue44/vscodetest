@@ -61,8 +61,8 @@ else {
 	if (Object.keys(product).length === 0) {
 		Object.assign(product, {
 			version: '1.102.0-dev',
-			nameShort: 'Code - OSS Dev',
-			nameLong: 'Code - OSS Dev',
+			nameShort: 'weiwei Dev',
+			nameLong: 'weiwei Dev',
 			applicationName: 'code-oss',
 			dataFolderName: '.vscode-oss',
 			urlProtocol: 'code-oss',
