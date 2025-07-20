@@ -1,12 +1,12 @@
 # Electron
 
-## 1.安装Electron
+## 1.安装 Electron
 
 ```js
 # npm 安装
 npm install electron --save-dev
 
-# 使用 
+# 使用
 "start": "electron ." // package.json
 npm run start
 ```
@@ -126,15 +126,15 @@ function makeSingleInstance () {
 ```js
 #!/usr/bin/env node
 
-const {spawn} = require('child_process') // 子进程
-const electron = require('electron')
-const path = require('path')
+const { spawn } = require("child_process"); // 子进程
+const electron = require("electron");
+const path = require("path");
 
-const appPath = path.join(__dirname, 'main.js')
-const args = [appPath].concat(process.argv.slice(2))
-const proc = spawn(electron, args, {stdio: 'inherit'})
+const appPath = path.join(__dirname, "main.js");
+const args = [appPath].concat(process.argv.slice(2));
+const proc = spawn(electron, args, { stdio: "inherit" });
 // process.exit() 终止当前进程
-proc.on('close', (code) => process.exit(code)) // 子进程结束后，手动再关闭一次
+proc.on("close", (code) => process.exit(code)); // 子进程结束后，手动再关闭一次
 ```
 
 ## 8.shell
@@ -160,19 +160,22 @@ shell.showItemInFolder(os.homedir()) // 文件管理器中打开用户主目录�
 ## 9.tray
 
 ```js
-const iconName = process.platform === 'win32' ? 'windows-icon.png' : 'iconTemplate.png'
-const iconPath = path.join(__dirname, iconName)
-appIcon = new Tray(iconPath)
+const iconName =
+	process.platform === "win32" ? "windows-icon.png" : "iconTemplate.png";
+const iconPath = path.join(__dirname, iconName);
+appIcon = new Tray(iconPath);
 
-const contextMenu = Menu.buildFromTemplate([{
-  label: 'Remove',
-  click: () => {
-    event.sender.send('tray-removed')
-  }
-}])
+const contextMenu = Menu.buildFromTemplate([
+	{
+		label: "Remove",
+		click: () => {
+			event.sender.send("tray-removed");
+		},
+	},
+]);
 
-appIcon.setToolTip('Electron Demo in the tray.')
-appIcon.setContextMenu(contextMenu)
+appIcon.setToolTip("Electron Demo in the tray.");
+appIcon.setContextMenu(contextMenu);
 
 // if (appIcon) appIcon.destroy()
 ```
@@ -181,50 +184,53 @@ appIcon.setContextMenu(contextMenu)
 
 ```js
 const options = {
-  title: 'Save an Image',
-  filters: [
-    { name: 'Images', extensions: ['jpg', 'png', 'gif'] }
-  ]
-}
+	title: "Save an Image",
+	filters: [{ name: "Images", extensions: ["jpg", "png", "gif"] }],
+};
 dialog.showSaveDialog(options, (filename) => {
-  // xxxx
-})
+	// xxxx
+});
 
-dialog.showOpenDialog({
-  properties: ['openFile', 'openDirectory']
-}, (files) => {
-  if (files) {
-    // xxxx
-  }
-})
+dialog.showOpenDialog(
+	{
+		properties: ["openFile", "openDirectory"],
+	},
+	(files) => {
+		if (files) {
+			// xxxx
+		}
+	}
+);
 
 const options = {
-  type: 'info',
-  title: 'Information',
-  message: "This is an information dialog. Isn't it nice?",
-  buttons: ['Yes', 'No']
-}
+	type: "info",
+	title: "Information",
+	message: "This is an information dialog. Isn't it nice?",
+	buttons: ["Yes", "No"],
+};
 dialog.showMessageBox(options, (index) => {
-  // xxxx
-})
+	// xxxx
+});
 
-dialog.showErrorBox('An Error Message', 'Demonstrating an error message.')
+dialog.showErrorBox("An Error Message", "Demonstrating an error message.");
 ```
 
 ## 11.menu
 
 ```js
-const menu = new Menu()
-menu.append(new MenuItem({ label: 'Electron', type: 'checkbox', checked: true }))
+const menu = new Menu();
+menu.append(
+	new MenuItem({ label: "Electron", type: "checkbox", checked: true })
+);
 
-win.webContents.on('context-menu', (e, params) => {
-    menu.popup(win, params.x, params.y)
-})
+win.webContents.on("context-menu", (e, params) => {
+	menu.popup(win, params.x, params.y);
+});
 
-ipcMain.on('show-context-menu', (event) => {
-  const win = BrowserWindow.fromWebContents(event.sender)
-  menu.popup(win)
-})
+ipcMain.on("show-context-menu", (event) => {
+	const win = BrowserWindow.fromWebContents(event.sender);
+	menu.popup(win);
+});
 ```
 
 ## 12.demo
@@ -401,7 +407,7 @@ app.on("window-all-closed", () => {
 
 # Vscode
 
-## 1.vscode源码环境配置
+## 1.vscode 源码环境配置
 
 ```js
 # 官方网址
@@ -420,7 +426,7 @@ MSVC v143 - VS 2022 C++ x64/x86 缓解库(最新)
 5. npm config edit:会打开记事本，添加 msvs_version=2022
 ```
 
-## 2.vscode源码编译
+## 2.vscode 源码编译
 
 ```js
 1.拉取代码
@@ -432,7 +438,17 @@ git clone https://gitcode.com/gh_mirrors/vscode6/vscode.git // 国内镜像地�
 5.npm run gulp vscode-win32-x64 // 打包 npm run gulp vscode-win32-x64-min
 ```
 
-## 3.activity bar location
+## 3.sha256查询
+
+```js
+// 对应位置下
+sha256sum.exe electron-v35.6.0-win32-x64.zip
+
+// 项目的sha256值的具体路径
+\build\checksums\electron.txt
+```
+
+## 4.activity bar location
 
 ```js
 # 修改默认位置为top
@@ -443,7 +459,7 @@ src/vs/workbench/browser/workbench.contribution.ts
 }
 ```
 
-## 4.Theme
+## 5.Theme
 
 ```js
 # 修改默认主题为light
@@ -454,18 +470,18 @@ const colorThemeSettingSchema = {
 }
 ```
 
-## 5.产品名称
+## 6.产品名称
 
 ```js
 # product.json
 "nameShort": "weiwei",
-"nameLong": "weiwei", 
-    
+"nameLong": "weiwei",
+
 1.全局搜索code-oss，进行全局替换为weiwei
 2.根目录下的 .build/electron 中的 code-oss.exe 名称更改为 weiwei.exe
 ```
 
-## 6.产品图标
+## 7.产品图标
 
 ```js
 # 图标更改
@@ -473,7 +489,7 @@ const colorThemeSettingSchema = {
 2. src/vs/workbench/browser/media/code-icon.svg
 ```
 
-# vscode插件开发
+# vscode 插件开发
 
 ## 1.环境配置
 
@@ -482,15 +498,44 @@ const colorThemeSettingSchema = {
 2. yo code
 ```
 
+# 装修
 
+## 1.美缝收边
 
+```js
+项目：全屋美缝+收边
+美缝材料：皇室工匠极瓷20纯聚脲
+收边材料：瓦克
+原价：2900+500=3300
+优惠价：2075+400=2475  (美缝在团购价基础上打75折，再减去100元，收边减去100元)
+订金：500元（已支付）
+尾款：1975元，施工完成验收后付尾款
+店铺地址：皇氏工匠美缝杭州代理（西园五路店）
+合同：后续抽时间去店里签合同
 
+美缝细节：阳台、客厅的地面，2个卫生间、厨房的地面与墙面，主卧飘窗
+收边细节：门框和墙纸，踢脚线和墙纸
+质保：美缝的断裂/脱落、收边都是质保3年，美缝变色质保20年
+```
 
+**市面上的美缝剂**
 
+![111](D:\biancheng\Electron\vscode-main\vscode\imagee\市面美缝剂.jpg)
 
+![](D:\biancheng\Electron\vscode-main\vscode\imagee\美缝剂2.jpg)
 
+**小区团购价格**
 
+![](D:\biancheng\Electron\vscode-main\vscode\imagee\团购价.jpg)
 
+**订金记录**
 
+![](D:\biancheng\Electron\vscode-main\vscode\imagee\定金记录.jpg)
 
+**收边增加项记录**
 
+这个到时候要全屋定制结束后再开展，所以要收边处理2次
+
+![](D:\biancheng\Electron\vscode-main\vscode\imagee\收边.jpg)
+
+## 2.
