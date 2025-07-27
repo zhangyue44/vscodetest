@@ -38,4 +38,5 @@
 **/test/automation/out/**
 **/typings/**
 **/.build/**
+**/proto/**
 !.vscode

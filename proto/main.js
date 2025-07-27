@@ -1,51 +1,10 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
 /**
  * https://github.com/google/protobuf/releases 下载protoc
  * https://github.com/thesayyn/protoc-gen-ts
  *
  * npm install protoc-gen-ts
  * .\protoc-25.1-win64\bin\protoc.exe --ts_out=.\ts Phoenix.proto
- * .\protoc-25.1-win64\bin\protoc.exe --plugin=protoc-gen-ts=.\node_modules\.bin\protoc-gen-ts --ts_out=.\ts Phoenix.proto
+ * .\protoc-25.1-win64\bin\protoc.exe --plugin=protoc-gen-ts=.\node_modules\.bin\protoc-gen-ts.cmd --ts_out=.\ts Phoenix.proto
  */
 
 /**
@@ -70,7 +29,7 @@ const PLUGIN_PATH = path.join(
 	__dirname,
 	"node_modules",
 	".bin",
-	"protoc-gen-ts"
+	"protoc-gen-ts.cmd"
 );
 const OUTPUT_DIR = path.join(__dirname, "ts");
 const PROTO_FILE = "Phoenix.proto";
